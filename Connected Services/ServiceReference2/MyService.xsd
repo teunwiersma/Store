@@ -26,4 +26,16 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetProducts">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="GetProductsResult" nillable="true" type="q2:ArrayOfProduct" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

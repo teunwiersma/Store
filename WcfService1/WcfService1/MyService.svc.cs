@@ -49,6 +49,39 @@ namespace WcfService1
             
         }
 
+        public List<Product> GetProducts()
+        {
+            List<Product> productList = new List<Product>();
+            Product product;
+            try
+            {
+                var connString = "Host=localhost;Username=postgres;Password=1234;Database=net";
+                using (var conn = new NpgsqlConnection(connString))
+                {
+                    conn.Open();
+
+
+                    using (var cmd = new NpgsqlCommand("SELECT id, name, price, amount FROM product", conn))
+                    using (var reader = cmd.ExecuteReader())
+                        while (reader.Read())
+                        {
+                            product = new Product(reader.GetInt32(0), reader.GetString(1), reader.GetDouble(2), reader.GetInt32(3));
+                            productList.Add(product);
+
+
+                        }
+                    conn.Close();
+                }
+            }
+            catch (Exception msg)
+            {
+                Console.WriteLine(msg.ToString());
+            }
+
+            return productList;
+
+        }
+
         public void InsertUser(string username, string password)
         {
             try

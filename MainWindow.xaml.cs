@@ -41,20 +41,17 @@ namespace Store
             
             foreach(User user in client.GetUsers())
             {
-                if(user.username == username && user.password == password)
+                Console.WriteLine(user.username);
+                if(user.username.Equals(username) && user.password.Equals(password))
                 {
                     SecondWindow secondWindow = new SecondWindow();
                     this.Visibility = Visibility.Hidden;
                     secondWindow.Show();
                 }
-                else
-                {
-                    MessageBox.Show("Gebruikersnaam of wachtwoord is verkeerd");
-                    break;
-                }
+                
             }
+                MessageBox.Show("Gebruikersnaam of wachtwoord is verkeerd");
 
-            
         }
 
         private void Register(object sender, RoutedEventArgs e)

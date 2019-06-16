@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Store.ServiceReference2;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,23 @@ namespace Store
     /// </summary>
     public partial class SecondWindow : Window
     {
+        MyServiceClient client = new MyServiceClient();
+
         public SecondWindow()
         {
             InitializeComponent();
+            callProducts();
+        }
+
+        private void callProducts()
+        {
+            foreach(Product product in client.GetProducts())
+            {
+                if(product.amount > 0)
+                {
+                    Products.Items.Add(product.name + ": " + product.price);
+                }
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -32,6 +47,7 @@ namespace Store
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             // Opnieuw ophalen van voorraad en producten
+            callProducts();
         }
     }
 }

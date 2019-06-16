@@ -106,6 +106,99 @@ namespace Store.ServiceReference2 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Product", Namespace="http://schemas.datacontract.org/2004/07/WcfService1")]
+    [System.SerializableAttribute()]
+    public partial class Product : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int amountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double priceField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int amount {
+            get {
+                return this.amountField;
+            }
+            set {
+                if ((this.amountField.Equals(value) != true)) {
+                    this.amountField = value;
+                    this.RaisePropertyChanged("amount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((this.idField.Equals(value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double price {
+            get {
+                return this.priceField;
+            }
+            set {
+                if ((this.priceField.Equals(value) != true)) {
+                    this.priceField = value;
+                    this.RaisePropertyChanged("price");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference2.IMyService")]
     public interface IMyService {
@@ -121,6 +214,12 @@ namespace Store.ServiceReference2 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/InsertUser", ReplyAction="http://tempuri.org/IMyService/InsertUserResponse")]
         System.Threading.Tasks.Task InsertUserAsync(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/GetProducts", ReplyAction="http://tempuri.org/IMyService/GetProductsResponse")]
+        Store.ServiceReference2.Product[] GetProducts();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/GetProducts", ReplyAction="http://tempuri.org/IMyService/GetProductsResponse")]
+        System.Threading.Tasks.Task<Store.ServiceReference2.Product[]> GetProductsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -164,6 +263,14 @@ namespace Store.ServiceReference2 {
         
         public System.Threading.Tasks.Task InsertUserAsync(string username, string password) {
             return base.Channel.InsertUserAsync(username, password);
+        }
+        
+        public Store.ServiceReference2.Product[] GetProducts() {
+            return base.Channel.GetProducts();
+        }
+        
+        public System.Threading.Tasks.Task<Store.ServiceReference2.Product[]> GetProductsAsync() {
+            return base.Channel.GetProductsAsync();
         }
     }
 }

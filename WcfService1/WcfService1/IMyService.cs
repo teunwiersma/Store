@@ -17,6 +17,30 @@ namespace WcfService1
 
         [OperationContract]
         void InsertUser(string username, string password);
+
+        [OperationContract]
+        List<Product> GetProducts();
+    }
+
+    [DataContract]
+    public class Product
+    {
+        [DataMember]
+        public int id { get; set; }
+        [DataMember]
+        public string name { get; set; }
+        [DataMember]
+        public double price { get; set; }
+        [DataMember]
+        public int amount { get; set; }
+
+        public Product(int id, string name, double price, int amount)
+        {
+            this.id = id;
+            this.name = name;
+            this.price = price;
+            this.amount = amount;
+        }
     }
 
     [DataContract]

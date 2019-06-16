@@ -19,6 +19,12 @@
   <wsdl:message name="IMyService_InsertUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:InsertUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IMyService_GetProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProducts" />
+  </wsdl:message>
+  <wsdl:message name="IMyService_GetProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMyService">
     <wsdl:operation name="GetUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/IMyService/GetUsers" message="tns:IMyService_GetUsers_InputMessage" />
@@ -27,6 +33,10 @@
     <wsdl:operation name="InsertUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IMyService/InsertUser" message="tns:IMyService_InsertUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMyService/InsertUserResponse" message="tns:IMyService_InsertUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMyService/GetProducts" message="tns:IMyService_GetProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMyService/GetProductsResponse" message="tns:IMyService_GetProducts_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMyService" type="tns:IMyService">
@@ -42,6 +52,15 @@
     </wsdl:operation>
     <wsdl:operation name="InsertUser">
       <soap:operation soapAction="http://tempuri.org/IMyService/InsertUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <soap:operation soapAction="http://tempuri.org/IMyService/GetProducts" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
