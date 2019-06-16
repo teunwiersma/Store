@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Store.ServiceReference2;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,31 +21,65 @@ namespace Store
     /// </summary>
     public partial class MainWindow : Window
     {
+        
+        MyServiceClient client = new MyServiceClient();
+
+
         public MainWindow()
         {
             InitializeComponent();
         }
-        string username;
-        string password;
 
         private void Login(object sender, RoutedEventArgs e)
         {
+            string username;
+            string password;
             //inlog functie hiero
             username = Name.Text;
             password = Password.Text;
             // test voor tweede window shit
-            if (username == "admin" && password == "admin")
+            
+            foreach(User user in client.GetUsers())
             {
-                SecondWindow secondWindow = new SecondWindow();
-                this.Visibility = Visibility.Hidden;
-                secondWindow.Show();
+                if(user.username == username && user.password == password)
+                {
+                    SecondWindow secondWindow = new SecondWindow();
+                    this.Visibility = Visibility.Hidden;
+                    secondWindow.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Gebruikersnaam of wachtwoord is verkeerd");
+                    break;
+                }
             }
+
             
         }
 
         private void Register(object sender, RoutedEventArgs e)
         {
             // register functie hiero
+            string newUsername = NewName.Text;
+
+            char[] charArray = newUsername.ToCharArray();
+            Array.Reverse(charArray);
+
+            foreach(User user in client.GetUsers())
+            {
+                if(!(user.username == newUsername))
+                {
+                    client.InsertUser(newUsername, new string(charArray));
+                    MessageBox.Show("Succesvol geregistreerd");
+                    break;
+                }
+                else
+                {
+                    MessageBox.Show("Gebruikersnaam bestaat al");
+                    break;
+                }
+            }
+
         }
     }
 }

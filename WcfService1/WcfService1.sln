@@ -3,12 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.705
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store", "Store.csproj", "{F1E389E5-6922-4FDE-AB22-8264906CECBE}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E148AAFA-6B9C-49D9-8DB4-FA94C054A42E} = {E148AAFA-6B9C-49D9-8DB4-FA94C054A42E}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService1", "WcfService1\WcfService1\WcfService1.csproj", "{E148AAFA-6B9C-49D9-8DB4-FA94C054A42E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService1", "WcfService1\WcfService1.csproj", "{E148AAFA-6B9C-49D9-8DB4-FA94C054A42E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F1E389E5-6922-4FDE-AB22-8264906CECBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F1E389E5-6922-4FDE-AB22-8264906CECBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F1E389E5-6922-4FDE-AB22-8264906CECBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F1E389E5-6922-4FDE-AB22-8264906CECBE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E148AAFA-6B9C-49D9-8DB4-FA94C054A42E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E148AAFA-6B9C-49D9-8DB4-FA94C054A42E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E148AAFA-6B9C-49D9-8DB4-FA94C054A42E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -29,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {64CF8356-0742-48DD-A890-18C866B51217}
+		SolutionGuid = {FB85592F-4F1C-4D88-A6BD-BBEA20E99F66}
 	EndGlobalSection
 EndGlobal
