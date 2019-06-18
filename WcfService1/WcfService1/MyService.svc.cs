@@ -12,9 +12,8 @@ namespace WcfService1
     // NOTE: In order to launch WCF Test Client for testing this service, please select MyService.svc or MyService.svc.cs at the Solution Explorer and start debugging.
     public class MyService : IMyService
     {
-        //var connString = "Host=localhost;Username=postgres;Password=1234;Database=net";
+        string connString = "Host=localhost;Username=postgres;Password=1234;Database=net";
 
-        
 
         public List<User> GetUsers()
         {
@@ -22,7 +21,6 @@ namespace WcfService1
             User user;
             try
             {
-                var connString = "Host=localhost;Username=postgres;Password=1234;Database=net";
                 using (var conn = new NpgsqlConnection(connString))
                 {
                     conn.Open();
@@ -55,7 +53,6 @@ namespace WcfService1
             Product product;
             try
             {
-                var connString = "Host=localhost;Username=postgres;Password=1234;Database=net";
                 using (var conn = new NpgsqlConnection(connString))
                 {
                     conn.Open();
@@ -86,7 +83,6 @@ namespace WcfService1
         {
             try
             {
-                var connString = "Host=localhost;Username=postgres;Password=1234;Database=net";
                 using (var conn = new NpgsqlConnection(connString))
                 {
                     conn.Open();
@@ -114,7 +110,6 @@ namespace WcfService1
         {
             try
             {
-                var connString = "Host=localhost;Username=postgres;Password=1234;Database=net";
                 using (var conn = new NpgsqlConnection(connString))
                 {
                     conn.Open();
@@ -143,7 +138,6 @@ namespace WcfService1
             User user = null;
             try
             {
-                var connString = "Host=localhost;Username=postgres;Password=1234;Database=net";
                 using (var conn = new NpgsqlConnection(connString))
                 {
                     conn.Open();
@@ -172,7 +166,6 @@ namespace WcfService1
             Product product = null;
             try
             {
-                var connString = "Host=localhost;Username=postgres;Password=1234;Database=net";
                 using (var conn = new NpgsqlConnection(connString))
                 {
                     conn.Open();
@@ -203,7 +196,6 @@ namespace WcfService1
             Product product;
             try
             {
-                var connString = "Host=localhost;Username=postgres;Password=1234;Database=net";
                 using (var conn = new NpgsqlConnection(connString))
                 {
                     conn.Open();
