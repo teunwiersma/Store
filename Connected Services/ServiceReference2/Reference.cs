@@ -244,6 +244,12 @@ namespace Store.ServiceReference2 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/GetProductsByUser", ReplyAction="http://tempuri.org/IMyService/GetProductsByUserResponse")]
         System.Threading.Tasks.Task<Store.ServiceReference2.Product[]> GetProductsByUserAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/UpdateMoney", ReplyAction="http://tempuri.org/IMyService/UpdateMoneyResponse")]
+        void UpdateMoney(double newBank, string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/UpdateMoney", ReplyAction="http://tempuri.org/IMyService/UpdateMoneyResponse")]
+        System.Threading.Tasks.Task UpdateMoneyAsync(double newBank, string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -327,6 +333,14 @@ namespace Store.ServiceReference2 {
         
         public System.Threading.Tasks.Task<Store.ServiceReference2.Product[]> GetProductsByUserAsync(string username) {
             return base.Channel.GetProductsByUserAsync(username);
+        }
+        
+        public void UpdateMoney(double newBank, string username) {
+            base.Channel.UpdateMoney(newBank, username);
+        }
+        
+        public System.Threading.Tasks.Task UpdateMoneyAsync(double newBank, string username) {
+            return base.Channel.UpdateMoneyAsync(newBank, username);
         }
     }
 }

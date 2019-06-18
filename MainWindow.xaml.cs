@@ -36,7 +36,7 @@ namespace Store
             string password = Password.Text;
             //inlog functie hiero
             // test voor tweede window shit
-            
+
             foreach(User user in client.GetUsers())
             {
                 if(user.username.Equals(username) && user.password.Equals(password))
@@ -61,20 +61,17 @@ namespace Store
             char[] charArray = newUsername.ToCharArray();
             Array.Reverse(charArray);
 
-            foreach(User user in client.GetUsers())
+            if(!client.GetUsers().Any(x => x.username.Equals(newUsername)))
             {
-                if(!(user.username == newUsername))
-                {
-                    client.InsertUser(newUsername, new string(charArray));
-                    MessageBox.Show("Succesvol geregistreerd");
-                    break;
-                }
-                else
-                {
-                    MessageBox.Show("Gebruikersnaam bestaat al");
-                    break;
-                }
+                client.InsertUser(newUsername, new string(charArray));
+                NewPassword.Content = "Your new password: " + new string(charArray);
+                MessageBox.Show("Succesvol geregistreerd");
             }
+            else
+            {
+                MessageBox.Show("Gebruikersnaam bestaat al");
+            }
+            
 
         }
     }

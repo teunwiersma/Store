@@ -52,6 +52,7 @@ namespace Store
             foreach(Product product in client.GetProductsByUser(username))
             {
                 Inventory.Items.Add(product.name + ": " + product.price);
+                OrderHistory.Items.Add(product.name + ": " + product.price);
             }
         }
 
@@ -60,14 +61,18 @@ namespace Store
             // koop button
             try
             {
-                if (!Inventory.Items.Contains(Products.SelectedItem))
+                if (Inventory.Items.Contains(Products.SelectedItem))
                 {
                     char[] newDelimiter = new char[] { ':' };
                     string product = Products.SelectedItem.ToString();
                     string[] splitProduct = product.Split(newDelimiter);
+                    double price = Convert.ToDouble(splitProduct[1]);
+                    double newSaldo = bank - price;
 
                     Inventory.Items.Add(Products.SelectedItem);
                     client.InsertProductToUser(username, splitProduct[0]);
+                    client.UpdateMoney(newSaldo, username);
+                    MoneyLabel.Content = "Money left: " + bank;
                 }
             }
             catch(NullReferenceException)
@@ -80,6 +85,8 @@ namespace Store
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             // Opnieuw ophalen van voorraad en producten
+            Inventory.Items.Clear();
+            OrderHistory.Items.Clear();
             callInventory();
             Products.Items.Clear();
             callProducts();

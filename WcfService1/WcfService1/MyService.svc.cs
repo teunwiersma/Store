@@ -129,7 +129,6 @@ namespace WcfService1
             catch (Exception msg)
             {
                 Console.WriteLine(msg.ToString());
-                Console.WriteLine("ERROR");
             }
         }
 
@@ -220,5 +219,30 @@ namespace WcfService1
 
             return productList;
         }
+
+        public void UpdateMoney(double newBank, string username)
+        {
+            try
+            {
+                using (var conn = new NpgsqlConnection(connString))
+                {
+                    conn.Open();
+
+
+                    using (var cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "UPDATE users SET bank = " + newBank +" WHERE username ='" + username + "'" ;
+                        cmd.ExecuteNonQuery();
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception msg)
+            {
+                Console.WriteLine(msg.ToString());
+            }
+        }
+
     }
 }

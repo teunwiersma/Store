@@ -32,6 +32,9 @@ namespace WcfService1
 
         [OperationContract]
         List<Product> GetProductsByUser(string username);
+
+        [OperationContract]
+        void UpdateMoney(double newBank, string username);
     }
 
     [DataContract]
