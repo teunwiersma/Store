@@ -32,19 +32,18 @@ namespace Store
 
         private void Login(object sender, RoutedEventArgs e)
         {
-            string username;
-            string password;
+            string username = Name.Text;
+            string password = Password.Text;
             //inlog functie hiero
-            username = Name.Text;
-            password = Password.Text;
             // test voor tweede window shit
             
             foreach(User user in client.GetUsers())
             {
-                Console.WriteLine(user.username);
                 if(user.username.Equals(username) && user.password.Equals(password))
                 {
-                    SecondWindow secondWindow = new SecondWindow();
+                    SecondWindow secondWindow = new SecondWindow(username, user.bank);
+                    secondWindow.username = username;
+                    secondWindow.bank = user.bank;
                     this.Visibility = Visibility.Hidden;
                     secondWindow.Show();
                 }

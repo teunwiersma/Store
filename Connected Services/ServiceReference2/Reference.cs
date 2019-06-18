@@ -220,6 +220,30 @@ namespace Store.ServiceReference2 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/GetProducts", ReplyAction="http://tempuri.org/IMyService/GetProductsResponse")]
         System.Threading.Tasks.Task<Store.ServiceReference2.Product[]> GetProductsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/InsertProductToUser", ReplyAction="http://tempuri.org/IMyService/InsertProductToUserResponse")]
+        void InsertProductToUser(string username, string product);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/InsertProductToUser", ReplyAction="http://tempuri.org/IMyService/InsertProductToUserResponse")]
+        System.Threading.Tasks.Task InsertProductToUserAsync(string username, string product);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/findUser", ReplyAction="http://tempuri.org/IMyService/findUserResponse")]
+        Store.ServiceReference2.User findUser(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/findUser", ReplyAction="http://tempuri.org/IMyService/findUserResponse")]
+        System.Threading.Tasks.Task<Store.ServiceReference2.User> findUserAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/findProduct", ReplyAction="http://tempuri.org/IMyService/findProductResponse")]
+        Store.ServiceReference2.Product findProduct(string productName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/findProduct", ReplyAction="http://tempuri.org/IMyService/findProductResponse")]
+        System.Threading.Tasks.Task<Store.ServiceReference2.Product> findProductAsync(string productName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/GetProductsByUser", ReplyAction="http://tempuri.org/IMyService/GetProductsByUserResponse")]
+        Store.ServiceReference2.Product[] GetProductsByUser(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/GetProductsByUser", ReplyAction="http://tempuri.org/IMyService/GetProductsByUserResponse")]
+        System.Threading.Tasks.Task<Store.ServiceReference2.Product[]> GetProductsByUserAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -271,6 +295,38 @@ namespace Store.ServiceReference2 {
         
         public System.Threading.Tasks.Task<Store.ServiceReference2.Product[]> GetProductsAsync() {
             return base.Channel.GetProductsAsync();
+        }
+        
+        public void InsertProductToUser(string username, string product) {
+            base.Channel.InsertProductToUser(username, product);
+        }
+        
+        public System.Threading.Tasks.Task InsertProductToUserAsync(string username, string product) {
+            return base.Channel.InsertProductToUserAsync(username, product);
+        }
+        
+        public Store.ServiceReference2.User findUser(string username) {
+            return base.Channel.findUser(username);
+        }
+        
+        public System.Threading.Tasks.Task<Store.ServiceReference2.User> findUserAsync(string username) {
+            return base.Channel.findUserAsync(username);
+        }
+        
+        public Store.ServiceReference2.Product findProduct(string productName) {
+            return base.Channel.findProduct(productName);
+        }
+        
+        public System.Threading.Tasks.Task<Store.ServiceReference2.Product> findProductAsync(string productName) {
+            return base.Channel.findProductAsync(productName);
+        }
+        
+        public Store.ServiceReference2.Product[] GetProductsByUser(string username) {
+            return base.Channel.GetProductsByUser(username);
+        }
+        
+        public System.Threading.Tasks.Task<Store.ServiceReference2.Product[]> GetProductsByUserAsync(string username) {
+            return base.Channel.GetProductsByUserAsync(username);
         }
     }
 }

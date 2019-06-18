@@ -109,5 +109,124 @@ namespace WcfService1
                 Console.WriteLine(msg.ToString());
             }
         }
+
+        public void InsertProductToUser(string username, string product)
+        {
+            try
+            {
+                var connString = "Host=localhost;Username=postgres;Password=1234;Database=net";
+                using (var conn = new NpgsqlConnection(connString))
+                {
+                    conn.Open();
+
+
+                    using (var cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "INSERT INTO product_user(product_id, user_id) values(@p, @u)";
+                        cmd.Parameters.AddWithValue("p", findProduct(product).id);
+                        cmd.Parameters.AddWithValue("u", findUser(username).id);
+                        cmd.ExecuteNonQuery();
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception msg)
+            {
+                Console.WriteLine(msg.ToString());
+                Console.WriteLine("ERROR");
+            }
+        }
+
+        public User findUser(string username)
+        {
+            User user = null;
+            try
+            {
+                var connString = "Host=localhost;Username=postgres;Password=1234;Database=net";
+                using (var conn = new NpgsqlConnection(connString))
+                {
+                    conn.Open();
+
+
+                    using (var cmd = new NpgsqlCommand("SELECT id, username, password, bank FROM users where username = '" + username + "'", conn))
+                    using (var reader = cmd.ExecuteReader())
+                        while (reader.Read())
+                        {
+                            user = new User(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetDouble(3));
+                        }
+                    conn.Close();
+                }
+                return user;
+            }
+            catch (Exception msg)
+            {
+                Console.WriteLine(msg.ToString());
+            }
+            return user;
+
+        }
+
+        public Product findProduct(string productName)
+        {
+            Product product = null;
+            try
+            {
+                var connString = "Host=localhost;Username=postgres;Password=1234;Database=net";
+                using (var conn = new NpgsqlConnection(connString))
+                {
+                    conn.Open();
+
+
+                    using (var cmd = new NpgsqlCommand("SELECT id, name, price, amount FROM product where name = '" + productName + "'", conn))
+                    using (var reader = cmd.ExecuteReader())
+                        while (reader.Read())
+                        {
+                            product = new Product(reader.GetInt32(0), reader.GetString(1), reader.GetDouble(2), reader.GetInt32(3));
+                        }
+                    conn.Close();
+                }
+
+                return product;
+            }
+            catch (Exception msg)
+            {
+                Console.WriteLine(msg.ToString());
+            }
+            return product;
+
+        }
+
+        public List<Product> GetProductsByUser(string username)
+        {
+            List<Product> productList = new List<Product>();
+            Product product;
+            try
+            {
+                var connString = "Host=localhost;Username=postgres;Password=1234;Database=net";
+                using (var conn = new NpgsqlConnection(connString))
+                {
+                    conn.Open();
+
+
+                    using (var cmd = new NpgsqlCommand("SELECT product_id, user_id, product.name, product.price ,product.amount from users, product, product_user where product_id = product.id and user_id = users.id and users.username = '" + username + "'", conn))
+                    using (var reader = cmd.ExecuteReader())
+                        while (reader.Read())
+                        {
+                            product = new Product(reader.GetInt32(0), reader.GetString(2), reader.GetDouble(3), reader.GetInt32(4));
+                            productList.Add(product);
+
+
+                        }
+                    conn.Close();
+                }
+            }
+            catch (Exception msg)
+            {
+                Console.WriteLine(msg.ToString());
+            }
+
+            return productList;
+        }
     }
 }

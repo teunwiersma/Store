@@ -20,6 +20,18 @@ namespace WcfService1
 
         [OperationContract]
         List<Product> GetProducts();
+
+        [OperationContract]
+        void InsertProductToUser(string username, string product);
+
+        [OperationContract]
+        User findUser(string username);
+
+        [OperationContract]
+        Product findProduct(string productName);
+
+        [OperationContract]
+        List<Product> GetProductsByUser(string username);
     }
 
     [DataContract]
@@ -55,7 +67,8 @@ namespace WcfService1
         [DataMember]
         public double bank { get; set; }
 
-        
+        public User() { }
+
         public User(int id, string username, string password, double bank)
         {
             this.id = id;

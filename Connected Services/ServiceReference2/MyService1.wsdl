@@ -25,6 +25,30 @@
   <wsdl:message name="IMyService_GetProducts_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProductsResponse" />
   </wsdl:message>
+  <wsdl:message name="IMyService_InsertProductToUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertProductToUser" />
+  </wsdl:message>
+  <wsdl:message name="IMyService_InsertProductToUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertProductToUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMyService_findUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:findUser" />
+  </wsdl:message>
+  <wsdl:message name="IMyService_findUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:findUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMyService_findProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:findProduct" />
+  </wsdl:message>
+  <wsdl:message name="IMyService_findProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:findProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMyService_GetProductsByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsByUser" />
+  </wsdl:message>
+  <wsdl:message name="IMyService_GetProductsByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsByUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMyService">
     <wsdl:operation name="GetUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/IMyService/GetUsers" message="tns:IMyService_GetUsers_InputMessage" />
@@ -37,6 +61,22 @@
     <wsdl:operation name="GetProducts">
       <wsdl:input wsaw:Action="http://tempuri.org/IMyService/GetProducts" message="tns:IMyService_GetProducts_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMyService/GetProductsResponse" message="tns:IMyService_GetProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertProductToUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMyService/InsertProductToUser" message="tns:IMyService_InsertProductToUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMyService/InsertProductToUserResponse" message="tns:IMyService_InsertProductToUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="findUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMyService/findUser" message="tns:IMyService_findUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMyService/findUserResponse" message="tns:IMyService_findUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="findProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMyService/findProduct" message="tns:IMyService_findProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMyService/findProductResponse" message="tns:IMyService_findProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsByUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMyService/GetProductsByUser" message="tns:IMyService_GetProductsByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMyService/GetProductsByUserResponse" message="tns:IMyService_GetProductsByUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMyService" type="tns:IMyService">
@@ -61,6 +101,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetProducts">
       <soap:operation soapAction="http://tempuri.org/IMyService/GetProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertProductToUser">
+      <soap:operation soapAction="http://tempuri.org/IMyService/InsertProductToUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findUser">
+      <soap:operation soapAction="http://tempuri.org/IMyService/findUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findProduct">
+      <soap:operation soapAction="http://tempuri.org/IMyService/findProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsByUser">
+      <soap:operation soapAction="http://tempuri.org/IMyService/GetProductsByUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
